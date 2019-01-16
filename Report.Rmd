@@ -1,0 +1,56 @@
+---
+title: "gapminder-report"
+author: "Kari"
+date: "January 16, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# load the data
+
+use read.scv to load gapminder data
+
+```{r}
+dat <- read.csv("/Users/Kari/Desktop/gapminder-demo/Data/gapminder_data.csv")
+summary(dat)
+```
+
+
+## Setup
+
+
+## Plot the data
+
+load the ggplot2 package:
+
+```{r}
+library("ggplot2")
+```
+
+## Plotting
+
+
+```{r}
+ggplot(data = dat, 
+       mapping = aes(x = year,
+                     y = lifeExp,
+                     by = country,
+                     color = continent)) +
+  facet_wrap(~ continent) +
+  geom_line() +
+  theme_bw()
+```
+
+
+## Insert pre-made figure
+
+We made figure_1 at "figures/life_exp.png".  How do we put it in this report?
+```{r, fig.cap= "life Expectancy vs. Year for each country, facetted by Continent"}
+knitr::include_graphics("/users/Kari/Desktop/gapminder-demo/figures/life_exp.png")
+```
+
+
+
+
